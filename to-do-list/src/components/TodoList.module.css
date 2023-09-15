@@ -1,0 +1,25 @@
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 30px 40px;
+}
+
+.todolist {
+	width: 500px;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	margin: 25px auto;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+		rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+		rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.btnDelete {
+	width: 100%;
+	display: block;
+	box-sizing: border-box;
+	font-size: 3px;
+	background-color: transparent;
+	border: none;
+}

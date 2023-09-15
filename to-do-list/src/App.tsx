@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import TodoList from "./components/TodoList";
 import NewTodo from "./components/NewTodo";
+import style from "./App.module.css";
 
 type todo = {
 	id: number;
@@ -12,7 +13,7 @@ const App: React.FC = () => {
 	const [todos, setTodos] = useState<todo[]>([]);
 
 	const addTodoHandler = (text: string) => {
-		const id: number = Math.round(Math.random() * 1000);
+		const id: number = Math.round(Math.random() * 10000);
 		setTodos((prev) => [...prev, { id: id, task: text }]);
 	};
 
@@ -21,8 +22,8 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<div className="App">
-			<h2>To-Do List : </h2>
+		<div className={style.App}>
+			<h2 className={style.heading}>To-Do List : </h2>
 			<NewTodo onAddTodo={addTodoHandler} />
 			<TodoList
 				todolist={todos}
