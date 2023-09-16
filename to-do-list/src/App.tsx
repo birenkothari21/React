@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import ReadtDom from "react-dom";
 
 import TodoList from "./components/TodoList";
 import NewTodo from "./components/NewTodo";
+import Wrapper from "./Wrapper";
 import style from "./App.module.css";
 
 type todo = {
@@ -22,14 +24,36 @@ const App: React.FC = () => {
 	};
 
 	return (
-		<div className={style.App}>
-			<h2 className={style.heading}>To-Do List : </h2>
-			<NewTodo onAddTodo={addTodoHandler} />
-			<TodoList
-				todolist={todos}
-				onDeleteTodo={deleteTodoHandler}
-			/>
-		</div>
+		<React.Fragment>
+			<div className={style.App}>
+				<h2 className={style.heading}>To-Do List : </h2>
+				<NewTodo onAddTodo={addTodoHandler} />
+				<TodoList
+					todolist={todos}
+					onDeleteTodo={deleteTodoHandler}
+				/>
+			</div>
+			<div>
+				<h2 style={{ textAlign: "center" }}>This is My To-Do List</h2>
+				{ReadtDom.createPortal(
+					<h2 style={{ textAlign: "center" }}>React Portal</h2>,
+					document.getElementById("heading")!
+				)}
+			</div>
+		</React.Fragment>
+		// <Wrapper>
+		// 	<div className={style.App}>
+		// 		<h2 className={style.heading}>To-Do List : </h2>
+		// 		<NewTodo onAddTodo={addTodoHandler} />
+		// 		<TodoList
+		// 			todolist={todos}
+		// 			onDeleteTodo={deleteTodoHandler}
+		// 		/>
+		// 	</div>
+		// 	<div>
+		// 		<h2 style={{ textAlign: "center" }}>This is My To-Do List</h2>
+		// 	</div>
+		// </Wrapper>
 	);
 };
 
