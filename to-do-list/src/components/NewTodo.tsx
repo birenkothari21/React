@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import "./NewTodo.css";
+import { spawn } from "child_process";
 
 type NewTodoProps = {
 	onAddTodo: (text: string) => void;
@@ -7,76 +8,77 @@ type NewTodoProps = {
 
 type todo = {
 	task: string;
+	isValid: boolean | null;
 };
 
 type actionType = {
-	type: "Add" | "Typing";
-	task?: string;
+	type: "INPUT_TYPING" | "INPUT_BLUR";
+	task: string;
 };
 
-function reducer(state: todo, action: actionType) {
-	switch (action.type) {
-		case "Add":
-			if (action.task?.length) {
-				state.task = action.task;
-				return state;
-			}
-			break;
-
-		case "Typing":
-			if (action.task?.length) {
-				state.task = action.task;
-				return state;
-			}
-			break;
-
-		default:
-			break;
+function reducer(state: todo, action: actionType): todo {
+	if (action.type === "INPUT_TYPING") {
+		return { task: action.task, isValid: action.task.length > 0 };
+	}
+	if (action.type === "INPUT_BLUR") {
+		return { task: state.task, isValid: state.task.length > 0 };
 	}
 	return state;
 }
 
 const NewTodo: React.FC<NewTodoProps> = (props) => {
-	const [isValid, setIsValid] = useState(true);
-	const [newTodo, setNewTodo] = useReducer(reducer, { task: "New Todo" });
-
-	useEffect(() => {
-		console.log("useEffect is working...!");
-
-		return () => {
-			console.log("CLEAN_UP");
-		};
-	}, []);
+	// const [isValid, setIsValid] = useState(true);
+	const [newTodo, setNewTodo] = useReducer(reducer, {
+		task: "",
+		isValid: null,
+	});
 
 	const submitHandler = (event: React.FormEvent) => {
 		event.preventDefault();
 
-		if (newTodo.task.trim().length === 0) {
-			setIsValid(false);
-			return;
-		}
+		setNewTodo({ type: "INPUT_BLUR", task: newTodo.task });
 
-		props.onAddTodo(newTodo.task);
-		setNewTodo({ type: "Add", task: newTodo.task });
+		if (newTodo.isValid) {
+			props.onAddTodo(newTodo.task);
+		}
 	};
 
 	const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.value.trim().length > 0) {
-			setIsValid(true);
-		}
-		setNewTodo({ type: "Typing", task: event.target.value });
+		setNewTodo({ type: "INPUT_TYPING", task: event.target.value });
+	};
+
+	const inputValidateHandler = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setNewTodo({ type: "INPUT_BLUR", task: newTodo.task });
 	};
 
 	return (
-		<div className={`form-control ${!isValid ? "invalid" : ""}`}>
+		<div
+			className={`form-control ${
+				newTodo.isValid === false ? "invalid" : ""
+			}`}
+		>
 			<form onSubmit={submitHandler}>
 				<label htmlFor="todoInput">Add New Task : </label>
 				<input
 					type="text"
 					id="todoInput"
 					onChange={inputChangeHandler}
+					onBlur={inputValidateHandler}
 				/>
 				<button type="submit">Add Task</button>
+				{newTodo.isValid === false && (
+					<span
+						style={{
+							fontSize: 13 + "px",
+							color: "red",
+							margin: 10 + "px",
+						}}
+					>
+						please fill above field
+					</span>
+				)}
 			</form>
 		</div>
 	);
