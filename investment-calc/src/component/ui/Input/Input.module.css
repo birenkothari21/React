@@ -1,0 +1,14 @@
+.form-input {
+	/* border: 1px solid black; */
+	width: 300px;
+	margin: 10px auto;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.form-input label {
+	font-size: 15px;
+	color: black;
+	margin: 5px 0;
+}
