@@ -1,0 +1,21 @@
+.calcTable {
+	width: 700px;
+	margin: 0px auto;
+	padding: 30px;
+	font-size: 15px;
+	background-color: transparent;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.calcTable table {
+	width: 100%;
+}
+
+.calcTable table th {
+	text-align: left;
+	color: rgb(23, 151, 117);
+}
+
+.calcTable table tr td {
+	text-align: left;
+}

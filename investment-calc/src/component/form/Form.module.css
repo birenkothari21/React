@@ -1,0 +1,12 @@
+.container {
+	width: 700px;
+	margin: 30px auto;
+	padding: 30px;
+	/* border: 1px solid black; */
+	background-color: rgb(23, 151, 117);
+}
+
+.row {
+	width: 100%;
+	display: flex;
+}
