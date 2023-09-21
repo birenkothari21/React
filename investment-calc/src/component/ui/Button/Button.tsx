@@ -2,14 +2,20 @@ import React from "react";
 import classes from "./Button.module.css";
 
 type inputBtn = {
-	type: string;
-	onSubmit: (event: React.FormEvent) => void;
+	type: "button" | "submit" | "reset" | undefined;
+	onClick: (event: React.FormEvent) => void;
+	value: string;
 };
 
 const Button: React.FC<inputBtn> = (props) => {
 	return (
 		<div className={classes["btn-div"]}>
-			<button onClick={props.onSubmit}>Calculate</button>
+			<button
+				type={props.type}
+				onClick={props.onClick}
+			>
+				{props.value}
+			</button>
 		</div>
 	);
 };
