@@ -10,12 +10,7 @@ type inputBtn = {
 const Button: React.FC<inputBtn> = (props) => {
 	return (
 		<div className={classes["btn-div"]}>
-			<button
-				type={props.type}
-				onClick={props.onClick}
-			>
-				{props.value}
-			</button>
+			<button {...props}>{props.value}</button>
 		</div>
 	);
 };

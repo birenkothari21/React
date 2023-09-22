@@ -4,7 +4,6 @@ import Form from "./component/form/Form";
 import Table from "./component/table/Table";
 
 import "./App.css";
-import { type } from "os";
 
 type calcRow = {
 	totalSavings: number;
@@ -19,43 +18,29 @@ function App() {
 	const calcInvestment = (investDetails: number[]): void => {
 		setCalcTable([]);
 		const [CS, YS, EI, IT] = investDetails;
+		const calcArr: calcRow[] = [];
 
-		const intr = (CS * 5) / 100;
-		const ti = intr;
-		const ts = CS + intr + YS;
-		const ic = ts - ti;
+		const intr = (CS * EI) / 100;
 
-		setCalcTable((prev) => [
-			...prev,
-			{
-				totalSavings: ts,
+		calcArr.push({
+			totalSavings: CS + intr + YS,
+			interest: intr,
+			totalInterest: intr,
+			investedCap: CS + intr + YS - intr,
+		});
+
+		for (let i = 1; i < IT; i++) {
+			const intr = (calcArr[i - 1].totalSavings * EI) / 100;
+
+			calcArr.push({
+				totalSavings: calcArr[i - 1].totalSavings + intr + YS,
 				interest: intr,
-				totalInterest: ti,
-				investedCap: ic,
-			},
-		]);
-
-		for (let i = 0; i < IT - 1; i++) {
-			setCalcTable((prevRow) => {
-				let intr =
-					(prevRow[prevRow.length - 1].totalSavings * EI) / 100;
-
-				return [
-					...prevRow,
-					{
-						totalSavings:
-							prevRow[prevRow.length - 1].totalSavings +
-							intr +
-							YS,
-						interest: intr,
-						totalInterest:
-							prevRow[prevRow.length - 1].totalInterest + intr,
-						investedCap:
-							prevRow[prevRow.length - 1].investedCap + YS,
-					},
-				];
+				totalInterest: calcArr[i - 1].interest + intr,
+				investedCap: calcArr[i - 1].investedCap + YS,
 			});
 		}
+
+		setCalcTable(calcArr);
 	};
 
 	const resetTable = () => {

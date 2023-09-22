@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "../../assets/ic.png";
+
 import classes from "./Header.module.css";
 
 const Header: React.FC = () => {

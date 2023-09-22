@@ -5,7 +5,7 @@ type input = {
 	label: string;
 	type: string;
 	id: string;
-	value: number;
+	value: string;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -19,8 +19,3 @@ const Input: React.FC<input> = (props: input) => {
 };
 
 export default Input;
-
-// 	type={props.type}
-//	id={props.id}
-// 	onChange={props.onChange}
-// 	value={props.value}
