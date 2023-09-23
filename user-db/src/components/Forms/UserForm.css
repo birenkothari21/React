@@ -1,0 +1,62 @@
+.form .form-heading h1 {
+	color: #48484b;
+	text-align: center;
+	font-size: 25px;
+}
+
+.form {
+	background-color: #fdfbfd;
+	width: 750px;
+	margin: 20px auto;
+	padding: 10px 30px;
+	border-top: 7px solid #6a68a4;
+	border-radius: 10px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.form-control {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 25px 0;
+}
+
+.form-control label {
+	color: #48484b;
+	font-size: 18px;
+}
+
+.form-control input {
+	background-color: transparent;
+	padding: 10px;
+	color: #48484b;
+	border: none;
+	border-radius: 10px;
+	margin: 10px 0;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.form-control button {
+	width: 300px;
+	background-color: #6a68a4;
+	border: none;
+	border-radius: 15px;
+	color: #fdfbfd;
+	padding: 10px;
+	margin: 10px auto;
+	cursor: pointer;
+	font-weight: bold;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+		rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.form-control button:hover {
+	background-color: #a2a6fd;
+}
+
+.err-text {
+	color: red;
+	font-size: 15px;
+}
