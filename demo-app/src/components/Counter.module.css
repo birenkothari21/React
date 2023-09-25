@@ -1,0 +1,28 @@
+.counter-main {
+	width: 700px;
+	margin: 10px auto;
+	padding: 20px;
+	background-color: rgba(241, 227, 245, 0.863);
+	border-radius: 10px;
+}
+
+.counter-main h1 {
+	color: rgba(39, 3, 123, 0.851);
+}
+
+.counter-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.counter-btns button {
+	background-color: rgba(39, 3, 123, 0.851);
+	color: white;
+	padding: 10px 30px;
+	font-size: 25px;
+	border: none;
+	margin: 10px;
+	border-radius: 10px;
+	cursor: pointer;
+}
