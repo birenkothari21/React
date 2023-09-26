@@ -1,29 +1,30 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/counterStore";
-import { increment, decrement, toggleCounter } from "../store/counterStore";
-
 import classes from "./Counter.module.css";
+import { useSelector, useDispatch } from "react-redux";
+
+interface stateType {
+	counter: number;
+	showCounter: boolean;
+}
 
 const Counter: React.FC = () => {
 	const dispatch = useDispatch();
-	const counter = useSelector((state: RootState) => state.counter.counter);
-	const showCounter = useSelector(
-		(state: RootState) => state.counter.showCounter
-	);
+
+	const counter = useSelector((state: stateType) => state.counter);
+	const showCounter = useSelector((state: stateType) => state.showCounter);
 
 	const incrementHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-		dispatch(increment(10));
+		dispatch({ type: "increment" });
 	};
 
 	const decrementHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-		dispatch(decrement(10));
+		dispatch({ type: "decrement" });
 	};
 
 	const toggleCounterHandler = (
 		event: React.MouseEvent<HTMLButtonElement>
 	) => {
-		dispatch(toggleCounter(!showCounter));
+		dispatch({ type: "toggleCounter", showCounter: !showCounter });
 	};
 
 	return (
