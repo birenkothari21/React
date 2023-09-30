@@ -7,9 +7,9 @@ type todo = {
 };
 
 const TodoList: React.FC<todo> = (props) => {
-	const deleteHandler = (event: React.FormEvent) => {
-		console.log("Delete Button Clicked...!");
-	};
+	// const deleteHandler = (event: React.FormEvent) => {
+	// 	console.log("Delete Button Clicked...!");
+	// };
 
 	return (
 		<div>

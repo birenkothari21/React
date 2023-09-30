@@ -3,7 +3,7 @@ import ReadtDom from "react-dom";
 
 import TodoList from "./components/TodoList";
 import NewTodo from "./components/NewTodo";
-import Wrapper from "./Wrapper";
+// import Wrapper from "./Wrapper";
 import style from "./App.module.css";
 
 type todo = {

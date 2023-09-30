@@ -20,9 +20,7 @@ const Counter: React.FC = () => {
 		dispatch(decrement(10));
 	};
 
-	const toggleCounterHandler = (
-		event: React.MouseEvent<HTMLButtonElement>
-	) => {
+	const toggleCounterHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
 		dispatch(toggleCounter(!showCounter));
 	};
 
