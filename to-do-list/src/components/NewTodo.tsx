@@ -1,6 +1,5 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import "./NewTodo.css";
-import { spawn } from "child_process";
 
 type NewTodoProps = {
 	onAddTodo: (text: string) => void;
