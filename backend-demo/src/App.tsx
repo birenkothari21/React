@@ -3,26 +3,37 @@ import React from "react";
 import "./App.css";
 
 function App() {
-	const getDataHandler = (event: React.FormEvent) => {
+	const getDataHandler = async (event: React.FormEvent) => {
 		event.preventDefault();
-		console.log(event);
 
-		fetch("http://localhost:3000/api/smartphones")
-			.then((response) => {
-				return response;
-			})
-			.then((data) => {
-				console.log(data);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		try {
+			const response = await fetch("http://localhost:3000/api/smartphones");
+			console.log(response);
+			const data = await response.json();
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const getSingleDataHandler = async (event: React.FormEvent) => {
+		event.preventDefault();
+
+		try {
+			const response = await fetch("http://localhost:3000/api/smartphones/3");
+			console.log(response);
+			const data = await response.json();
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
 		<div className="App">
 			<div>
 				<button onClick={getDataHandler}>Get Data</button>
+				<button onClick={getSingleDataHandler}>Get Single Data</button>
 			</div>
 		</div>
 	);
