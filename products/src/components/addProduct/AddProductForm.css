@@ -1,0 +1,66 @@
+.add-product-form {
+	background-color: aliceblue;
+	width: 800px;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	padding: 10px;
+	margin: 10px auto;
+	width: 400px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.form-control label {
+	text-align: left;
+	margin: 10px;
+}
+
+.form-control input {
+	text-align: left;
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid rgba(120, 118, 118, 0.6);
+	border-radius: 3px;
+}
+
+.form-control-actions {
+	background-color: transparent;
+	display: flex;
+	flex-direction: row;
+	margin: 10px auto;
+	width: 400px;
+	justify-content: space-around;
+}
+
+.form-control-actions .btn-submit {
+	font-size: 15px;
+	font-weight: bold;
+	width: 150px;
+	background-color: rgb(4, 80, 157);
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	cursor: pointer;
+	color: white;
+}
+
+.form-control-actions .btn-cancel {
+	font-size: 15px;
+	font-weight: bold;
+	width: 150px;
+	color: black;
+	background-color: rgb(205, 209, 211);
+	border: none;
+	border-radius: 10px;
+	padding: 10px;
+	cursor: pointer;
+}
