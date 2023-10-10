@@ -8,6 +8,9 @@ import Products from "./pages/Products";
 import ErrorPage from "./pages/ErrorPage";
 import ProductDetail from "./pages/ProductDetail";
 
+import { loader as productsLoader } from "./pages/Products";
+import NewProduct, { action as addAction } from "./pages/NewProduct";
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -15,8 +18,16 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 		children: [
 			{ path: "/", element: <Home /> },
-			{ path: "/products", element: <Products /> },
-			{ path: "/products/:prdId", element: <ProductDetail /> },
+			{
+				path: "/products",
+				element: <Products />,
+				loader: productsLoader,
+			},
+			{
+				path: "/products/:prdId",
+				element: <ProductDetail />,
+			},
+			{ path: "/products/new", element: <NewProduct />, action: addAction },
 		],
 	},
 ]);
