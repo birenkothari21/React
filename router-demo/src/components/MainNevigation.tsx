@@ -26,6 +26,16 @@ const MainNevigation: React.FC = () => {
 						Products
 					</NavLink>
 				</li>
+				<li>
+					<NavLink
+						to="/products/new"
+						className={({ isActive }) =>
+							isActive ? classes.active : undefined
+						}
+					>
+						Add Product
+					</NavLink>
+				</li>
 			</ul>
 		</div>
 	);
